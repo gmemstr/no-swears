@@ -17,10 +17,7 @@ module.exports = {
    **/
 	filter: (words, callback) => {
 		var finalString = words
-		fs.readFile(path.join(__dirname,'swearwords.txt'), 'utf8', (err, data) => {
-			if (err) throw err
-			// Trim down file input to remove weird encoding/returns
-			var lines = data.replace(new RegExp('\r','g'),'').split('\n')
+		swearList(lines => {
 			for (var i = 0; i < lines.length; i++) {
 				var bw = new RegExp(lines[i], 'gi')
 				finalString = finalString.replace(bw, '****')
@@ -32,11 +29,8 @@ module.exports = {
    * True if swearword is found, false if not
    **/
 	hasSwears: (words, callback) => {
-		fs.readFile(path.join(__dirname,'swearwords.txt'), 'utf8', (err, data) => {
-			if (err) throw err
+		swearList(lines =>{
 			var b = false
-			// Trim down file input to remove weird encoding/returns
-			var lines = data.replace(new RegExp('\r','g'),'').split('\n')
 			for (var i = 0; i < lines.length; i++) {
 				if(words.indexOf(lines[i]) > -1) {
 					b = true
@@ -45,4 +39,12 @@ module.exports = {
 			callback(b)
 		});
 	}
+}
+
+var swearList = callback => {
+	fs.readFile(path.join(__dirname,'swearwords.txt'), 'utf8', (err, data) => {
+		if (err) throw err
+		data = data.replace(new RegExp('\r','g'),'').split('\n')
+		callback(data)
+	});
 }
