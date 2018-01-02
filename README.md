@@ -1,7 +1,9 @@
-no-swears
+no-swears 
 ===
 
 Automagically filter out swear words in strings 
+
+[![npm version](https://badge.fury.io/js/no-swears.svg)](https://badge.fury.io/js/no-swears)
 
 Very simple package for censoring swear words from JavaScript strings,
 replacing offending words with "\*\*\*\*". 
