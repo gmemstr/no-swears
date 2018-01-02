@@ -11,7 +11,7 @@ replacing offending words with "\*\*\*\*".
 ```javascript
 'use strict'
 
-const noswear = require('no-swear')
+const noswears = require('no-swears')
 ```
 
 ### filter()
@@ -22,7 +22,7 @@ string and a callback, returning the cleaned up string to the program.
 ```javascript
 let badString = "this is a bitching string"
 
-noswear.filter(badString, goodString => {
+noswears.filter(badString, goodString => {
 	console.log(goodString)
 })
 ```
