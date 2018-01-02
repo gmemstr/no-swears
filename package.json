@@ -1,0 +1,27 @@
+{
+  "name": "no-swears",
+  "version": "1.0.0",
+  "description": "Filter swearwords out of your strings automagically",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmemstr/no-swears.git"
+  },
+  "keywords": [
+    "swearing",
+    "filter",
+    "string",
+    "swears",
+    "bad",
+    "words"
+  ],
+  "author": "Gabriel Simmer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gmemstr/no-swears/issues"
+  },
+  "homepage": "https://github.com/gmemstr/no-swears#readme"
+}
