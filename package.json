@@ -1,6 +1,6 @@
 {
   "name": "no-swears",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Filter swearwords out of your strings automagically",
   "main": "index.js",
   "scripts": {
