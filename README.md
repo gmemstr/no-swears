@@ -10,6 +10,10 @@ replacing offending words with "\*\*\*\*".
 
 ## Usage
 
+```bash
+npm install --save no-swears
+```
+
 ```javascript
 'use strict'
 
