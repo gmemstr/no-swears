@@ -9,6 +9,7 @@
 'use strict'
 
 const fs = require('fs')
+const path = require('path')
 
 module.exports = {
 	/**
@@ -20,7 +21,7 @@ module.exports = {
    **/
 	filter: (words, callback) => {
 		var finalString = words
-		fs.readFile('swearwords.txt', 'utf8', (err, data) => {
+		fs.readFile(path.join(__dirname,'swearwords.txt'), 'utf8', (err, data) => {
 			if (err) throw err
 			// Trim down file input to remove weird encoding/returns
 			var lines = data.replace(new RegExp('\r','g'),'').split('\n')
