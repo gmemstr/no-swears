@@ -25,8 +25,19 @@ string and a callback, returning the cleaned up string to the program.
 let badString = "this is a bitching string"
 
 noswears.filter(badString, goodString => {
-	console.log(goodString)
+	console.log(goodString) // "this is a ****ing string"
 })
 ```
 
-More options coming soon :)
+### hasSwears()
+
+This just returns true or false to callback depending on whether the passed string
+contains a swear word
+
+```javascript
+let badString = "this is a bitching string"
+
+noswears.hasSwears(badString, swearBool => {
+	console.log(swearBool) // true
+})
+```

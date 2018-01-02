@@ -14,10 +14,6 @@ const path = require('path')
 module.exports = {
 	/**
    * Replaces bad words with asterisks
-   *
-   * @param {string} words - String of words to filter
-   *
-   * @returns {string} String of words (censored).
    **/
 	filter: (words, callback) => {
 		var finalString = words
@@ -30,6 +26,23 @@ module.exports = {
 				finalString = finalString.replace(bw, '****')
 			}
 			callback(finalString)
+		});
+	},
+	/**
+   * True if swearword is found, false if not
+   **/
+	hasSwears: (words, callback) => {
+		fs.readFile(path.join(__dirname,'swearwords.txt'), 'utf8', (err, data) => {
+			if (err) throw err
+			var b = false
+			// Trim down file input to remove weird encoding/returns
+			var lines = data.replace(new RegExp('\r','g'),'').split('\n')
+			for (var i = 0; i < lines.length; i++) {
+				if(words.indexOf(lines[i]) > -1) {
+					b = true
+				}
+			}
+			callback(b)
 		});
 	}
 }
