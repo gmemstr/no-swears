@@ -1,5 +1,5 @@
 /** 
- * no-swears - Filer our swear words from your strings
+ * no-swears - Filter out or detect swear words in your strings
  *
  * @author Gabriel Simmer <https://github.com/gmemstr>
  * @version 1.0
