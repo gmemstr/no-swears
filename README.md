@@ -20,7 +20,7 @@ npm install --save no-swears
 const noswears = require('no-swears')
 ```
 
-### filter()
+### filter(string, callback)
 
 This is the most basic filtering function, and requires the offending 
 string and a callback, returning the cleaned up string to the program.
@@ -33,7 +33,7 @@ noswears.filter(badString, goodString => {
 })
 ```
 
-### hasSwears()
+### hasSwears(string, callback)
 
 This just returns true or false to callback depending on whether the passed string
 contains a swear word
@@ -46,14 +46,14 @@ noswears.hasSwears(badString, swearBool => {
 })
 ```
 
-### hasSwearsSync()
+### hasSwearsSync(string)
 
 This just returns true or false synchronously to be used in true/false conditions
 
 ```javascript
 let badString = "this is a bitching string"
 
-if (noswears.hasSwearsSync) {
-	console.log("Has swears!") // "Has swears!"
+if (noswears.hasSwearsSync(badString)) {
+	console.log("Has swears!") // "Has swears"!
 }
 ```
