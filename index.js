@@ -38,6 +38,16 @@ module.exports = {
       }
       callback(b);
     });
+  },
+  hasSwearsSync: (words) => {
+    var lines = swearListSync()
+    var b = false
+    for (var i = 0; i < lines.length; i++) {
+      if (words.indexOf(lines[i]) > -1) {
+        b = true;
+      }
+    }
+    return b
   }
 };
 
@@ -48,3 +58,8 @@ var swearList = callback => {
     callback(data);
   });
 };
+var swearListSync = () => {
+  var data = fs.readFileSync(path.join(__dirname, "swearwords.txt"), "utf8")
+  data = data.replace(new RegExp("\r", "g"), "").split("\n");
+  return data
+}

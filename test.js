@@ -11,18 +11,26 @@ noswears.filter(badString, goodString => {
     goodString
   );
   if (goodString == expected) {
-    console.log("✔ Success!");
+    console.log("✔ Success!\n");
   } else {
-    console.log("✖ Failed!");
+    console.log("✖ Failed!\n");
   }
 });
 
 noswears.hasSwears(badString, swearBool => {
-  console.log("\nTesting hasSwears\nWant true, got", swearBool);
+  console.log("Testing hasSwears\nWant true, got", swearBool);
   if (swearBool == true) {
-    console.log("✔ Success!");
+    console.log("✔ Success!\n");
   } else {
-    console.log("✖ Failed!");
+    console.log("✖ Failed!\n");
   }
 });
 
+
+var hasSwearsSyncResult = noswears.hasSwearsSync(badString)
+console.log("\nTesting hasSwearsSync\nWant true, got", hasSwearsSyncResult)
+if (hasSwearsSyncResult) {
+  console.log("✔ Success!\n");
+} else {
+  console.log("✖ Failed!\n");
+}

@@ -45,3 +45,15 @@ noswears.hasSwears(badString, swearBool => {
 	console.log(swearBool) // true
 })
 ```
+
+### hasSwearsSync()
+
+This just returns true or false synchronously to be used in true/false conditions
+
+```javascript
+let badString = "this is a bitching string"
+
+if (noswears.hasSwearsSync) {
+	console.log("Has swears!") // "Has swears!"
+}
+```
