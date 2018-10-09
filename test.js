@@ -1,20 +1,20 @@
-"use strict";
+'use strict';
 
-const noswears = require("./index");
-
-let badString = "hell brainfuck is a weird bitch";
-
+const noswears = require('./index');
 const expected = "**** brain**** is a weird *****";
 
-noswears.filter(badString, goodString => {
+noswears.filterSwearWords(badString, goodString => {
+  let expected = '**** brain**** is a weird *****';
+
   console.log(
-    'Testing filter\nWant string "' + expected + '", got',
-    goodString
+    `Testing filterSwearWords
+    Want string "${expected}", got "${goodString}"`
   );
-  if (goodString == expected) {
-    console.log("✔ Success!\n");
+
+  if (goodString === expected) {
+    console.log('✔ Success!');
   } else {
-    console.log("✖ Failed!\n");
+    console.log('✖ Failed!');
   }
 });
 
@@ -31,19 +31,27 @@ if (filterSyncResult === expected) {
 }
 
 noswears.hasSwears(badString, swearBool => {
-  console.log("Testing hasSwears\nWant true, got", swearBool);
-  if (swearBool == true) {
-    console.log("✔ Success!\n");
+  console.log(
+    `Testing hasSwears
+    Want true, got ${swearBool}`
+  );
+
+  if (swearBool === true) {
+    console.log('✔ Success!');
   } else {
-    console.log("✖ Failed!\n");
+    console.log('✖ Failed!');
   }
 });
 
+let hasSwearsSyncResult = noswears.hasSwearsSync(badString);
 
-var hasSwearsSyncResult = noswears.hasSwearsSync(badString)
-console.log("\nTesting hasSwearsSync\nWant true, got", hasSwearsSyncResult)
+console.log(
+  `Testing hasSwearsSync
+  Want true, got ${hasSwearsSyncResult}`
+);
+
 if (hasSwearsSyncResult) {
-  console.log("✔ Success!\n");
+  console.log('✔ Success!');
 } else {
-  console.log("✖ Failed!\n");
+  console.log('✖ Failed!');
 }
