@@ -20,7 +20,7 @@ npm install --save no-swears
 const noswears = require('no-swears')
 ```
 
-### filter(string, callback)
+### filterSwearWords(string, callback)
 
 This is the most basic filtering function, and requires the offending 
 string and a callback, returning the cleaned up string to the program.
@@ -28,7 +28,7 @@ string and a callback, returning the cleaned up string to the program.
 ```javascript
 let badString = "this is a bitching string"
 
-noswears.filter(badString, goodString => {
+noswears.filterSwearWords(badString, goodString => {
 	console.log(goodString) // "this is a ****ing string"
 })
 ```
