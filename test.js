@@ -1,8 +1,7 @@
 'use strict';
 
 const noswears = require('./index');
-
-let badString = 'hell brainfuck is a weird bitch';
+const expected = "**** brain**** is a weird *****";
 
 noswears.filterSwearWords(badString, goodString => {
   let expected = '**** brain**** is a weird *****';
@@ -18,6 +17,18 @@ noswears.filterSwearWords(badString, goodString => {
     console.log('✖ Failed!');
   }
 });
+
+
+var filterSyncResult = noswears.filterSync(badString)
+console.log(
+  'Testing filter\nWant string "' + expected + '", got',
+  expected
+);
+if (filterSyncResult === expected) {
+  console.log("✔ Success!\n");
+} else {
+  console.log("✖ Failed!\n");
+}
 
 noswears.hasSwears(badString, swearBool => {
   console.log(

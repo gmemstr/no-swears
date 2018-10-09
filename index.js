@@ -21,6 +21,15 @@ module.exports = {
       callback(getFilteredString(finalString, lines));
     });
   },
+  filterSync: (words) => {
+    var lines = swearListSync()
+    var finalString = words;
+    for (var i = 0; i < lines.length; i++) {
+      var bw = new RegExp(lines[i], "gi");
+      finalString = finalString.replace(bw, "*".repeat(lines[i].length));
+    }
+    return finalString;
+  },
   /**
    * True if swearword is found, false if not
    **/
