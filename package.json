@@ -1,7 +1,7 @@
 {
   "name": "no-swears",
   "version": "1.2.1",
-  "description": "Filter swearwords out of your strings automagically",
+  "description": "Filter swearwords out of your strings automatically",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/gmemstr/no-swears/issues"
   },
-  "homepage": "https://github.com/gmemstr/no-swears#readme"
+  "homepage": "https://github.com/gmemstr/no-swears#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }
