@@ -6,60 +6,53 @@
  * @license MIT
  **/
 
-"use strict";
+'use strict';
 
-const fs = require("fs");
-const path = require("path");
+const swearList = require('./swearList');
 
 module.exports = {
   /**
    * Replaces bad words with asterisks
    **/
-  filter: (words, callback) => {
-    var finalString = words;
-    swearList(lines => {
-      for (var i = 0; i < lines.length; i++) {
-        var bw = new RegExp(lines[i], "gi");
-        finalString = finalString.replace(bw, "*".repeat(lines[i].length));
-      }
-      callback(finalString);
+  filterSwearWords: (words, callback) => {
+    let finalString = words;
+
+    swearList.getList((lines) => {
+      callback(getFilteredString(finalString, lines));
     });
   },
   /**
    * True if swearword is found, false if not
    **/
   hasSwears: (words, callback) => {
-    swearList(lines => {
-      var b = false;
-      for (var i = 0; i < lines.length; i++) {
-        if (words.indexOf(lines[i]) > -1) {
-          b = true;
-        }
-      }
-      callback(b);
+    swearList.getList((lines) => {
+      callback(hasSwearWords(words, lines));
     });
   },
   hasSwearsSync: (words) => {
-    var lines = swearListSync()
-    var b = false
-    for (var i = 0; i < lines.length; i++) {
-      if (words.indexOf(lines[i]) > -1) {
-        b = true;
-      }
-    }
-    return b
+    let lines = swearList.getListSync();
+
+    return hasSwearWords(words, lines);
   }
 };
 
-var swearList = callback => {
-  fs.readFile(path.join(__dirname, "swearwords.txt"), "utf8", (err, data) => {
-    if (err) throw err;
-    data = data.replace(new RegExp("\r", "g"), "").split("\n");
-    callback(data);
-  });
+let hasSwearWords = (words, lines) => {
+  let itHasASwear = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (words.indexOf(lines[i]) > -1) {
+      itHasASwear = true;
+    }
+  }
+
+  return itHasASwear;
 };
-var swearListSync = () => {
-  var data = fs.readFileSync(path.join(__dirname, "swearwords.txt"), "utf8")
-  data = data.replace(new RegExp("\r", "g"), "").split("\n");
-  return data
-}
+
+let getFilteredString = (finalString, lines) => {
+  for (let i = 0; i < lines.length; i++) {
+    let badWord = new RegExp(lines[i], 'gi');
+    finalString = finalString.replace(badWord, '*'.repeat(lines[i].length));
+  }
+
+  return finalString;
+};
