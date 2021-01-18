@@ -6,9 +6,9 @@
  * @license MIT
  **/
 
-'use strict';
+"use strict";
 
-const swearList = require('./swearList');
+const swearList = require("./swearList");
 
 module.exports = {
   /**
@@ -22,7 +22,7 @@ module.exports = {
     });
   },
   filterSync: (words) => {
-    var lines = swearListSync()
+    var lines = swearListSync();
     var finalString = words;
     for (var i = 0; i < lines.length; i++) {
       var bw = new RegExp(lines[i], "gi");
@@ -42,7 +42,7 @@ module.exports = {
     let lines = swearList.getListSync();
 
     return hasSwearWords(words, lines);
-  }
+  },
 };
 
 let hasSwearWords = (words, lines) => {
@@ -59,8 +59,8 @@ let hasSwearWords = (words, lines) => {
 
 let getFilteredString = (finalString, lines) => {
   for (let i = 0; i < lines.length; i++) {
-    let badWord = new RegExp(lines[i], 'gi');
-    finalString = finalString.replace(badWord, '*'.repeat(lines[i].length));
+    let badWord = new RegExp(lines[i], "gi");
+    finalString = finalString.replace(badWord, "*".repeat(lines[i].length));
   }
 
   return finalString;
