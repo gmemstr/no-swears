@@ -2,6 +2,9 @@
 
 const noswears = require("./index");
 const expected = "**** brain**** is a weird *****";
+const badString = "cunt brainfuck is a weird penis";
+
+console.log("############# Test ###############");
 
 noswears.filterSwearWords(badString, (goodString) => {
   let expected = "**** brain**** is a weird *****";
@@ -12,9 +15,9 @@ noswears.filterSwearWords(badString, (goodString) => {
   );
 
   if (goodString === expected) {
-    console.log("✔ Success!");
+    console.log("✔ Success!\n");
   } else {
-    console.log("✖ Failed!");
+    console.log("✖ Failed!\n");
   }
 });
 
@@ -33,9 +36,9 @@ noswears.hasSwears(badString, (swearBool) => {
   );
 
   if (swearBool === true) {
-    console.log("✔ Success!");
+    console.log("✔ Success!\n");
   } else {
-    console.log("✖ Failed!");
+    console.log("✖ Failed!\n");
   }
 });
 
@@ -47,7 +50,7 @@ console.log(
 );
 
 if (hasSwearsSyncResult) {
-  console.log("✔ Success!");
+  console.log("✔ Success!\n");
 } else {
-  console.log("✖ Failed!");
+  console.log("✖ Failed!\n");
 }
