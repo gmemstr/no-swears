@@ -22,7 +22,7 @@ module.exports = {
     });
   },
   filterSync: (words) => {
-    var lines = swearListSync();
+    var lines = swearList.getListSync();
     var finalString = words;
     for (var i = 0; i < lines.length; i++) {
       var bw = new RegExp(lines[i], "gi");
@@ -49,7 +49,7 @@ let hasSwearWords = (words, lines) => {
   let itHasASwear = false;
 
   for (let i = 0; i < lines.length; i++) {
-    if (words.indexOf(lines[i]) > -1) {
+    if (words.indexOf(lines[i].toString().toLowerCase()) > -1) {
       itHasASwear = true;
     }
   }
@@ -59,7 +59,7 @@ let hasSwearWords = (words, lines) => {
 
 let getFilteredString = (finalString, lines) => {
   for (let i = 0; i < lines.length; i++) {
-    let badWord = new RegExp(lines[i], "gi");
+    let badWord = new RegExp(lines[i].toString().toLowerCase(), "gi");
     finalString = finalString.replace(badWord, "*".repeat(lines[i].length));
   }
 
